@@ -5,7 +5,7 @@ class App extends React.Component {
         super(props);
     }
     render() {
-        return <div>App</div>;
+        return (<iframe src="//www.youtube.com/embed/IdneKLhsWOQ" frameborder="0" allowfullscreen></iframe>)
     }
 }
 
