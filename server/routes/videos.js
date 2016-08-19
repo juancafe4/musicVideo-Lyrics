@@ -10,4 +10,4 @@ router.route('/')
     });
   })
 
-module.exports = router
+module.exports = Router
