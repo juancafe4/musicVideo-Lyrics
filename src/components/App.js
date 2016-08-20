@@ -1,11 +1,18 @@
 import React from 'react';
 
+import SearchVideLyric from './SearchVideLyric'
+import DisplayVideo from './DisplayVideo'
 class App extends React.Component {
     constructor(props) {
         super(props);
     }
     render() {
-        return (<iframe src="//www.youtube.com/embed/IdneKLhsWOQ" frameborder="0" allowfullscreen></iframe>)
+        return (
+          <div className="container">
+            <SearchVideLyric />
+            <DisplayVideo />
+          </div>
+        );
     }
 }
 
