@@ -1,7 +1,7 @@
 import React from 'react';
 
 import SearchVideLyric from './SearchVideLyric'
-import DisplayVideo from './DisplayVideo'
+import DisplayResults from './DisplayResults'
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -10,7 +10,7 @@ class App extends React.Component {
         return (
           <div className="container">
             <SearchVideLyric />
-            <DisplayVideo />
+            <DisplayResults />
           </div>
         );
     }
