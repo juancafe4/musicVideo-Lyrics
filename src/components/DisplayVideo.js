@@ -11,7 +11,7 @@ class DisplayVideo extends React.Component {
           urlVideo: "",
           lyrics: []
         }
-        axios.post('/api/scraper', {songName: 'eyes of the insane', artist: 'Slayer'})
+        axios.post('/api/scraper', {songName: 'Everything has changed', artist: 'Taylor Swift'})
           .then(res => {
             this.setState({
               songName: res.data.songName,
