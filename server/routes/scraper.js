@@ -13,6 +13,7 @@ router.route('/').post((req, res) => {
   let {songName, artist} = req.body;
   let urlVideo = ""
   let lyricsUrl = ""
+
   axios.get(encodeURI(url + songName + ' ' + artist))
   .then(res => res.data)
   .then(result => {
@@ -35,14 +36,17 @@ router.route('/').post((req, res) => {
   .then(r => {
     let html = r.data;
     let $ = cheerio.load(html)
-    // console.log('lyricsUrl ', $('tr')['0'].children[0].children[1].attribs.href)
     lyricsUrl = $('tr')['0'].children[0].children[1].attribs.href;
+    console.log(lyricsUrl)
     return axios.get(lyricsUrl)
   })
   .then(r => {
     let html = r.data
     let $ = cheerio.load(html)
-    let lyrics = $('.col-lg-8')['0'].children[22].children.map((val, index)=> {
+    let getLyrics = $('.col-lg-8')['0'].children[22].children || $('.col-lg-8')['0'].children[25].children 
+    //console.log(getLyrics)
+    let lyrics = getLyrics.map((val, index)=> {
+      
       if (index >= 2) {
         if (val.data)
           return val.data

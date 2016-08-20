@@ -9,10 +9,9 @@ class DisplayVideo extends React.Component {
           songName: "",
           artist: "",
           urlVideo: "",
-          lyrics: ""
+          lyrics: []
         }
-        console.log('I am in the constructor')
-        axios.post('/api/scraper', {songName: 'Red', artist: 'Taylor Swift'})
+        axios.post('/api/scraper', {songName: 'eyes of the insane', artist: 'Slayer'})
           .then(res => {
             this.setState({
               songName: res.data.songName,
@@ -29,16 +28,26 @@ class DisplayVideo extends React.Component {
         //console.log(this.state)
         let iframe = this.state.urlVideo
         let src = $(iframe).attr('src')
-
+    
+        let textLyrics = this.state.lyrics.map((val, index) => {
+          if (val) {
+            if (val === 'br')
+              return <br key={index} />
+            else
+              return val
+          }
+        })
         return (
           <div className="row">
-            <div className="col-xs-6">
+            <div className="col-xs-8">
               <h3>Video Player</h3>
-              <iframe   src={src} allowFullScreen="allowFullScreen"></iframe>
+              <iframe width="600"  height="600" src={src + '?autoplay=1'} frameBorder={0} allowFullScreen="allowFullScreen"></iframe>
             </div>
-            <div className="col-xs-6">
+            <div className="col-xs-4">
               <h3>Lyrics</h3>
-              {this.state.lyrics}
+              <div>
+                {textLyrics}
+              </div>
             </div>
           </div>        
         )
