@@ -1,14 +1,23 @@
-import {DropdownButton, MenuItem}
+import {DropdownButton, MenuItem} from 'react-bootstrap'
 
 import React from 'react';
 
 class DisplayResults extends React.Component {
     constructor(props) {
         super(props);
-        this.displayName = 'DisplayResults';
+  
     }
     render() {
-        return <div>DisplayResults</div>;
+        return (
+        <div>
+            <h3>
+              Name: Song Name: url
+              <DropdownButton title=":" id="bg-vertical-dropdown-1">
+                <MenuItem eventKey="1">Dropdown link</MenuItem>
+              </DropdownButton>
+            </h3>
+        </div>
+      )
     }
 }
 
