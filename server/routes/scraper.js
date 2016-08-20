@@ -7,7 +7,7 @@ const  embed = require("embed-video")
 
 let url = 'https://imvdb.com/api/v1/search/videos?q='
 
-let urlLyrics = 'http://www.lyrics.com/search.php?keyword='
+let urlLyrics = 'http://search.azlyrics.com/search.php?q='
 
 router.route('/').post((req, res) => {
   let {songName, artist} = req.body;
@@ -19,6 +19,7 @@ router.route('/').post((req, res) => {
     artist = result.results[0].artists[0].name
     songName = result.results[0].song_title
     urlVideo = result.results[0].url
+
     return axios.get(urlVideo)
   })
   .then(res =>  {
@@ -28,21 +29,29 @@ router.route('/').post((req, res) => {
     urlVideo = embed($('.videoInfoList')['3'].children[0].next.children[0]. attribs.href)
     let newArtist = artist.replace(/ /g, '+')
     let newSongName = songName.replace(/ /g, '+')
-    return axios.get(urlLyrics + newArtist  + newSongName + '+&what=all')
+
+    return axios.get(urlLyrics + newArtist  +  '+' + newSongName + '+&what=all')
   })
   .then(r => {
     let html = r.data;
     let $ = cheerio.load(html)
-    lyricsUrl = $('.lyrics_preview')[0].attribs.href;
-
-    return axios.get('http://www.lyrics.com' + lyricsUrl)
+    // console.log('lyricsUrl ', $('tr')['0'].children[0].children[1].attribs.href)
+    lyricsUrl = $('tr')['0'].children[0].children[1].attribs.href;
+    return axios.get(lyricsUrl)
   })
   .then(r => {
     let html = r.data
     let $ = cheerio.load(html)
-    let lyrics = $('#lyrics')['0'].children.map(val => {
-      if (val.data) return val.data + "\n"
-    }).join('')
+    let lyrics = $('.col-lg-8')['0'].children[22].children.map((val, index)=> {
+      if (index >= 2) {
+        if (val.data)
+          return val.data
+        if(val.name=== 'br')
+          return val.name
+      }
+      return null
+    });
+
     res.send({songName, artist, urlVideo, lyrics})
   })
   .catch(err => {

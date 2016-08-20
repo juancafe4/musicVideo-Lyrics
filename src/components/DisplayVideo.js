@@ -12,7 +12,7 @@ class DisplayVideo extends React.Component {
           lyrics: ""
         }
         console.log('I am in the constructor')
-        axios.post('/api/scraper', {songName: 'White Horse', artist: 'Taylor Swift'})
+        axios.post('/api/scraper', {songName: 'Red', artist: 'Taylor Swift'})
           .then(res => {
             this.setState({
               songName: res.data.songName,
