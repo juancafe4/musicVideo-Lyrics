@@ -26,6 +26,7 @@ router.route('/').post((req, res) => {
   .then(res =>  {
     let html = res.data;
     let $ = cheerio.load(html)
+
     // console.log($('.videoInfoList')['3'].children[0].next.children[0]. attribs.href)
     urlVideo = embed($('.videoInfoList')['3'].children[0].next.children[0]. attribs.href)
     let newArtist = artist.replace(/ /g, '+')
@@ -33,6 +34,7 @@ router.route('/').post((req, res) => {
 
     return axios.get(urlLyrics + newArtist  +  '+' + newSongName + '+&what=all')
   })
+
   .then(r => {
     let html = r.data;
     let $ = cheerio.load(html)
