@@ -3,12 +3,12 @@ import AppDispatcher from '../AppDispatcher'
 import uuid from 'uuid';
 
 let _videos = [];
-
+let _videoLyric
 class VideoStore extends EventEmitter {
   constructor() {
     super();
 
-    AppDispatcher.reqister(action => {
+    AppDispatcher.register(action => {
       switch(action.type) {
         
         case 'RECEIVE_VIDEOS':
@@ -35,7 +35,7 @@ class VideoStore extends EventEmitter {
         break;
 
         case 'GET_ONE_SCRAPER':
-        var { video } = action;
+        _videoLyric =  action.obj;
         this.emit("CHANGE");
         break;
       }
@@ -52,6 +52,10 @@ class VideoStore extends EventEmitter {
 
   getAll() {
     return _videos;
+  }
+
+  getMusicAndLyrics() {
+    return _videoLyric;
   }
 }
 

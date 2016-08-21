@@ -12,8 +12,8 @@ const VideoActions = {
   deleteVideo(id) {
     API.deleteVideo(id);
   },
-  getOneScraper(id) {
-    API.getOneScraper(id);
+  getOneScraper(obj) {
+    API.getOneScraper(obj);
   }
 }
 

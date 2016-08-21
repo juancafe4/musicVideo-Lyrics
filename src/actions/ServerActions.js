@@ -24,11 +24,11 @@ const ServerActions = {
       type: 'DELETE_VIDEO',
       id
     })
-  }
-  getOneScraper(id) {
+  },
+  getOneScraper(obj) {
     AppDispatcher.dispatch({
       type: "GET_ONE_SCRAPER",
-      id
+      obj
     })
   }
 }

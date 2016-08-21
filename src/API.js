@@ -19,15 +19,15 @@ const API = {
     .then(res => res.data)
     .then(ServerActions.receiveOneVideo)
     .catch(console.error);
-  }
+  },
   deleteVideo(id) {
     axios.delete('/api/videos/:id')
     .then(res => res.data)
     .then(ServerActions.deleteVideo)
     .catch(console.error);
   },
-  getOneScraper(id) {
-    axios.get('/api/scraper/:id')
+  getOneScraper(obj) {
+    axios.post('/api/scraper', obj)
     .then(res => res.data)
     .then(ServerActions.getOneScraper)
     .catch(console.error)
