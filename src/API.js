@@ -31,6 +31,12 @@ const API = {
     .then(res => res.data)
     .then(ServerActions.getOneScraper)
     .catch(console.error)
+  },
+  getScrapers(obj) {
+    axios.post('/api/scraper/links', obj)
+    .then(res => res.data)
+    .then(ServerActions.getScrapers)
+    .catch(console.error)
   }
 }
 

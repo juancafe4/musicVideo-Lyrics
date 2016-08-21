@@ -31,6 +31,12 @@ const ServerActions = {
       obj
     })
   }
+  getScrapers(obj) {
+    AppDispatcher.dispatch({
+      type: "GET_SCRAPERS",
+      obj
+    })
+  }
 }
 
 export default ServerActions

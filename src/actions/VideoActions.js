@@ -14,6 +14,9 @@ const VideoActions = {
   },
   getOneScraper(obj) {
     API.getOneScraper(obj);
+  },
+  getScrapers(obj) {
+    API.getScrapers(obj);
   }
 }
 

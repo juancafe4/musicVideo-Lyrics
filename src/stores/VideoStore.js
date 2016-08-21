@@ -10,7 +10,7 @@ class VideoStore extends EventEmitter {
 
     AppDispatcher.register(action => {
       switch(action.type) {
-        
+
         case 'RECEIVE_VIDEOS':
         _videos = action.videos;
         this.emit("CHANGE");
@@ -35,6 +35,11 @@ class VideoStore extends EventEmitter {
         break;
 
         case 'GET_ONE_SCRAPER':
+        _videoLyric =  action.obj;
+        this.emit("CHANGE");
+        break;
+
+        case 'GET_SCRAPERS':
         _videoLyric =  action.obj;
         this.emit("CHANGE");
         break;
