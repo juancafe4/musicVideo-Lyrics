@@ -31,7 +31,7 @@ class SearchVideoLyric extends React.Component {
     submit(e) {
       e.preventDefault()
       let {songName, artist} = this.state;
-      if (songName && artist) {
+      if (songName || artist) {
         //trigger action
         VideoActions.getScrapers({songName, artist})
         this.setState({

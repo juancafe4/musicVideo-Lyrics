@@ -3,6 +3,7 @@ import axios from 'axios'
 import $ from 'jquery'
 import VideoStore from '../stores/VideoStore'
 import VideoActions from '../actions/VideoActions'
+import {ProgressBar} from 'react-bootstrap'
 // import cheerio from 'cheerio'
 class DisplayVideo extends React.Component {
     constructor(props) {
@@ -68,7 +69,7 @@ class DisplayVideo extends React.Component {
           )
       }
       else
-        return <div></div>
+        return <ProgressBar active now={45} />
     }
 }
 
