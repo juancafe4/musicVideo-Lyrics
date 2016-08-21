@@ -30,7 +30,7 @@ const ServerActions = {
       type: "GET_ONE_SCRAPER",
       obj
     })
-  }
+  },
   getScrapers(obj) {
     AppDispatcher.dispatch({
       type: "GET_SCRAPERS",

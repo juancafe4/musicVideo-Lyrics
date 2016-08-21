@@ -1,9 +1,8 @@
 import { EventEmitter } from 'events'
 import AppDispatcher from '../AppDispatcher'
-import uuid from 'uuid';
-
 let _videos = [];
 let _videoLyric
+let _links = []
 class VideoStore extends EventEmitter {
   constructor() {
     super();
@@ -23,7 +22,6 @@ class VideoStore extends EventEmitter {
 
         case 'CREATE_VIDEO':
         var { video } = action;
-        video._id = uuid();
         _video.push(video);
         this.emit("CHANGE");
         break;
@@ -40,7 +38,7 @@ class VideoStore extends EventEmitter {
         break;
 
         case 'GET_SCRAPERS':
-        _videoLyric =  action.obj;
+        _links =  action.obj;
         this.emit("CHANGE");
         break;
       }
@@ -61,6 +59,10 @@ class VideoStore extends EventEmitter {
 
   getMusicAndLyrics() {
     return _videoLyric;
+  }
+
+  getLinks() {
+    return _links;
   }
 }
 

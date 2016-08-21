@@ -33,7 +33,7 @@ class SearchVideoLyric extends React.Component {
       let {songName, artist} = this.state;
       if (songName && artist) {
         //trigger action
-        VideoActions.getOneScraper({songName, artist })
+        VideoActions.getScrapers({songName, artist})
         this.setState({
           songName: '',
           artist: '' 

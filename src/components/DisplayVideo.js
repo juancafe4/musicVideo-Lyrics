@@ -15,7 +15,7 @@ class DisplayVideo extends React.Component {
         this._onChange = this._onChange.bind(this);
     }
     componentDidMount() {
-      VideoActions.getOneScraper();
+      VideoActions.getOneScraper(this.props.result);
       VideoStore.startListening(this._onChange);
     }
 
@@ -34,8 +34,16 @@ class DisplayVideo extends React.Component {
           let iframe = this.state.videos.urlVideo
           let src = $(iframe).attr('src')
       
-          let textLyrics = this.state.videos.lyrics.map((val, index) => {
-            if (val) {
+          let textLyrics1 = this.state.videos.lyrics.map((val, index) => {
+            if (this.state.videos.lyrics.length / 2 < index && val) {
+              if (val === 'br')
+                return <br key={index} />
+              else
+                return val
+            }
+          });
+          let textLyrics2 = this.state.videos.lyrics.map((val, index) => {
+            if (this.state.videos.lyrics.length / 2 >= index && val) {
               if (val === 'br')
                 return <br key={index} />
               else
@@ -44,18 +52,17 @@ class DisplayVideo extends React.Component {
           });
           return (
             <div className="row">
-              <div className="col-xs-8">
+              <div className="col-xs-6">
                 <h3>Video Player</h3>
-                 <iframe width="600"  height="600" src={src + '?autoplay=1'} frameBorder={0} allowFullScreen="allowFullScreen"></iframe>
+                 <iframe width="300"  height="300" src={src + '?autoplay=1'} frameBorder={0} allowFullScreen="allowFullScreen"></iframe>
               </div>
-              <div className="col-xs-4">
+              <div className="col-xs-3">
                 <h3>Lyrics</h3>
-                {textLyrics}
-                <div>
-                  
-                </div>
+                {textLyrics1}
               </div>
-
+              <div className="col-xs-3">
+                {textLyrics2}
+              </div>
            </div>
                   
           )
