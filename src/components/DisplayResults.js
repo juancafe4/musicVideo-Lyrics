@@ -38,25 +38,29 @@ class DisplayResults extends React.Component {
       });
     }
     render() {
-        
+
         if (this.state.results.length !== 0) {
-          let trs = this.state.results.map((val ,index) => {        
-            
+          let trs = this.state.results.map((val ,index) => {
+
             return (
               <tr onClick={this.open.bind(null, val)} key={index + 1}>
-                <td>{val.songName}</td>
                 <td>{val.artist}</td>
+                <td>{val.songName}</td>
                 <td>{val.url}</td>
-              </tr>      
+              </tr>
             )
           });
           return (
-            <div>         
+            <div>
+            <br/>
+            <br/>
+            <br/>
+            {/* <p>Click on the song name to display the music video and lyrics</p> */}
               <Table striped bordered hover>
                 <thead>
                   <tr>
-                    <th>Song Name</th>
                     <th>Artist</th>
+                    <th>Song Name</th>
                     <th>URL</th>
                   </tr>
                 </thead>
@@ -68,7 +72,7 @@ class DisplayResults extends React.Component {
 
               <OpenResult result={this.state.actualResult}show={this.state.showModal} onHide={this.close}/>
             </div>
-          )   
+          )
         }
         else return <div></div>
     }

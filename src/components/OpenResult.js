@@ -9,9 +9,9 @@ class OpenResult extends React.Component {
     render() {
 
       return (
-        <Modal bsSize="large" show={this.props.show} onHide={this.props.onHide}>
+        <Modal bsSize="large" classname='modal-lg' show={this.props.show} onHide={this.props.onHide}>
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>Music Video and Lyrics</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <DisplayVideo result={this.props.result}/>

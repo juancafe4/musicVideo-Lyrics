@@ -8,7 +8,7 @@ import {ProgressBar} from 'react-bootstrap'
 class DisplayVideo extends React.Component {
     constructor(props) {
         super(props);
-        
+
         this.state = {
           vidoes: VideoStore.getMusicAndLyrics()
         }
@@ -34,7 +34,7 @@ class DisplayVideo extends React.Component {
           console.log(this.state)
           let iframe = this.state.videos.urlVideo
           let src = $(iframe).attr('src')
-      
+
           let textLyrics1 = this.state.videos.lyrics.map((val, index) => {
             if (this.state.videos.lyrics.length / 2 < index && val) {
               if (val === 'br')
@@ -55,7 +55,7 @@ class DisplayVideo extends React.Component {
             <div className="row">
               <div className="col-xs-6">
                 <h3>Video Player</h3>
-                 <iframe width="300"  height="300" src={src + '?autoplay=1'} frameBorder={0} allowFullScreen="allowFullScreen"></iframe>
+                 <iframe width="550"  height="550" src={src + '?autoplay=1'} frameBorder={0} allowFullScreen="allowFullScreen"></iframe>
               </div>
               <div className="col-xs-3">
                 <h3>Lyrics</h3>
@@ -65,7 +65,7 @@ class DisplayVideo extends React.Component {
                 {textLyrics2}
               </div>
            </div>
-                  
+
           )
       }
       else

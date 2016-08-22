@@ -36,22 +36,18 @@ class SearchVideoLyric extends React.Component {
         VideoActions.getScrapers({songName, artist})
         this.setState({
           songName: '',
-          artist: '' 
+          artist: ''
         })
       }
     }
     render() {
-        return (  
-          <form onSubmit={this.submit}>
+        return (
+          <div className="center" >
+        <center><h1>Music and Lyrics</h1></center>
+          <form onSubmit={this.submit} className='inputs'>
             <FormGroup
               controlId="formBasicText"
               validationState={this.getValidationState()}
-            />
-            <FormControl
-            type="text"
-            value={this.state.songName}
-            placeholder="Song Name"
-            onChange={this.changeSong}
             />
             <FormControl
             type="text"
@@ -59,10 +55,18 @@ class SearchVideoLyric extends React.Component {
             placeholder="Artist Name"
             onChange={this.changeArtist}
             />
-            <Button type="submit" bsStyle="primary">
-              <span className="glyphicon glyphicon-search"></span>
+            <FormControl
+            type="text"
+            value={this.state.songName}
+            placeholder="Song Name"
+            onChange={this.changeSong}
+            />
+            <Button type="submit" className="btn btn-outline-primary">
+              <span className="glyphicon glyphicon-search"> Search</span>
             </Button>
           </form>
+          </div>
+
         )
     }
 }
